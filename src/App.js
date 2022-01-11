@@ -1,9 +1,16 @@
 import "./App.css";
+import Layout from "./components/layout/Layout";
+import CoinsProvider from "./contexts/pagePortfolioContext";
+import Portfolio from "./pages/Portfolio";
 
 function App() {
   return (
     <div className="App">
-      <p className="text-red-500">hello</p>
+      <CoinsProvider>
+        <Layout>
+          <Portfolio />
+        </Layout>
+      </CoinsProvider>
     </div>
   );
 }
