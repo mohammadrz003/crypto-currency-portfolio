@@ -3,12 +3,12 @@ const Header = () => {
     <header className="flex justify-between px-10 py-8">
       <h2 className="text-2xl font-bold tracking-wide">Balance: $25</h2>
 
-      <a href="/" class="flex space-x-3 items-center font-medium text-gray-600">
+      <a href="/" className="flex items-center space-x-3 font-medium text-gray-600">
         <span>rezaiimohammad00@gmail.com</span>
         <img
           alt="profil"
           src="/assets/profile-pic-office.png"
-          class="mx-auto object-cover rounded-full h-10 w-10 "
+          className="object-cover w-10 h-10 mx-auto rounded-full "
         />
       </a>
     </header>

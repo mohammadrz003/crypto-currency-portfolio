@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { coinsContext } from "../../../contexts/pagePortfolioContext";
 import { getTrendingCoins } from "../../../adapters/pagePortfolioAdapter";
 
 const Trending = () => {
-  const [trendingCoins, setTrendingCoins] = useState(null);
+  const { trendingCoins, setTrendingCoins } = useContext(coinsContext);
 
   useEffect(() => {
     getTrendingCoins().then((response) => {
@@ -16,35 +17,38 @@ const Trending = () => {
         <h4 className="text-xl font-semibold">Trending currency</h4>
       </div>
       <div className="mt-4">
-        <ul class="flex flex-col">
+        <ul className="flex flex-col">
           {trendingCoins ? (
             trendingCoins.map((coin) => {
               return (
-                <li class="border-gray-400 flex flex-row mb-2">
-                  <div class="shadow border select-none cursor-pointer bg-white dark:bg-gray-800 rounded-md flex flex-1 items-center p-4">
-                    <div class="flex flex-col w-10 h-10 justify-center items-center mr-4">
-                      <a href="/" class="block relative">
+                <li
+                  key={coin.item.id}
+                  className="flex flex-row mb-2 border-gray-400"
+                >
+                  <div className="flex items-center flex-1 p-4 bg-white border rounded-md shadow cursor-pointer select-none dark:bg-gray-800">
+                    <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
+                      <a href="/" className="relative block">
                         <img
                           alt="profil"
                           src={coin.item.small}
-                          class="mx-auto object-cover rounded-full h-10 w-10 "
+                          className="object-cover w-10 h-10 mx-auto rounded-full "
                         />
                       </a>
                     </div>
-                    <div class="flex-1 pl-1 md:mr-16">
-                      <div class="font-medium dark:text-white">
+                    <div className="flex-1 pl-1 md:mr-16">
+                      <div className="font-medium dark:text-white">
                         {coin.item.symbol}
                       </div>
-                      <div class="text-gray-600 dark:text-gray-200 text-sm">
+                      <div className="text-sm text-gray-600 dark:text-gray-200">
                         {coin.item.name}
                       </div>
                     </div>
-                    <button class="w-24 text-right flex justify-end">
+                    <button className="flex justify-end w-24 text-right">
                       <svg
                         width="12"
                         fill="currentColor"
                         height="12"
-                        class="hover:text-gray-800 dark:hover:text-white dark:text-gray-200 text-gray-500"
+                        className="text-gray-500 hover:text-gray-800 dark:hover:text-white dark:text-gray-200"
                         viewBox="0 0 1792 1792"
                         xmlns="http://www.w3.org/2000/svg"
                       >

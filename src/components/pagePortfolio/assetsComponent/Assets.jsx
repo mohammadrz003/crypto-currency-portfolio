@@ -1,39 +1,51 @@
+import { useState } from "react";
+import Modal from "../../shared/modal";
+import ModalContent from "../modalContent/ModalContent";
+
 const Assets = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="w-4/6">
       <div className="flex items-center justify-between">
         <h4 className="text-xl font-semibold">Your assets</h4>
-        <button className="bg-teal text-dark px-3 py-1.5 rounded-md font-semibold">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="bg-teal text-dark px-3 py-1.5 rounded-md font-semibold"
+        >
           Add New
         </button>
+        <Modal className="min-h-[27rem]" isModalOpen={isModalOpen} onClose={setIsModalOpen}>
+          <ModalContent />
+        </Modal>
       </div>
       <div>
-        <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-          <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-            <table class="min-w-full leading-normal">
+        <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
+          <div className="inline-block min-w-full overflow-hidden rounded-lg shadow">
+            <table className="min-w-full leading-normal">
               <thead>
                 <tr>
                   <th
                     scope="col"
-                    class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
                   >
                     User
                   </th>
                   <th
                     scope="col"
-                    class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
                   >
                     Role
                   </th>
                   <th
                     scope="col"
-                    class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
                   >
                     Created at
                   </th>
                   <th
                     scope="col"
-                    class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
                   >
                     status
                   </th>
@@ -41,37 +53,37 @@ const Assets = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <div class="flex items-center">
-                      <div class="flex-shrink-0">
-                        <a href="/" class="block relative">
+                  <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                    <div className="flex items-center">
+                      <div className="flex-shrink-0">
+                        <a href="/" className="relative block">
                           <img
                             alt="profil"
                             src="/images/person/6.jpg"
-                            class="mx-auto object-cover rounded-full h-10 w-10 "
+                            className="object-cover w-10 h-10 mx-auto rounded-full "
                           />
                         </a>
                       </div>
-                      <div class="ml-3">
-                        <p class="text-gray-900 whitespace-no-wrap">
+                      <div className="ml-3">
+                        <p className="text-gray-900 whitespace-no-wrap">
                           Julien Huger
                         </p>
                       </div>
                     </div>
                   </td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p class="text-gray-900 whitespace-no-wrap">User</p>
+                  <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                    <p className="text-gray-900 whitespace-no-wrap">User</p>
                   </td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p class="text-gray-900 whitespace-no-wrap">23/09/2010</p>
+                  <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                    <p className="text-gray-900 whitespace-no-wrap">23/09/2010</p>
                   </td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                  <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                    <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
                       <span
                         aria-hidden="true"
-                        class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                        className="absolute inset-0 bg-green-200 rounded-full opacity-50"
                       ></span>
-                      <span class="relative">active</span>
+                      <span className="relative">active</span>
                     </span>
                   </td>
                 </tr>
