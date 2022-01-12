@@ -47,7 +47,7 @@ const ModalContent = () => {
       <div className="relative">
         <input
           onFocus={() => setIsSearchResultFocus(true)}
-          //   onBlur={() => setIsSearchResultFocus(false)}
+          // onBlur={() => setIsSearchResultFocus(false)}
           onChange={searchInputChangeHandler}
           value={searchInputValue}
           className="w-full p-2 border border-gray-400 rounded-md outline-none"
@@ -58,6 +58,7 @@ const ModalContent = () => {
           filteredCoins={filteredCoins}
           searchInputValue={searchInputValue}
           isSearchResultFocus={isSearchResultFocus}
+          setIsSearchResultFocus={setIsSearchResultFocus}
         />
       </div>
     </div>

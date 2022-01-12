@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react/cjs/react.development";
+import { useEffect, useContext, useState } from "react/cjs/react.development";
 import { coinsContext } from "../../../contexts/pagePortfolioContext";
 import { getAllCryptoCurrencyData } from "../../../adapters/pagePortfolioAdapter";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
@@ -7,8 +7,10 @@ const SearchResult = ({
   isSearchResultFocus,
   filteredCoins,
   searchInputValue,
+  setIsSearchResultFocus,
 }) => {
-  const { allCryptoCurrency, setAllCryptoCurrency } = useContext(coinsContext);
+  const { allCryptoCurrency, setAllCryptoCurrency, userCoins, setUserCoins } =
+    useContext(coinsContext);
 
   useEffect(() => {
     getAllCryptoCurrencyData()
@@ -19,6 +21,13 @@ const SearchResult = ({
         console.log(error);
       });
   }, []);
+
+  const coinIdHandler = (id) => {
+    setUserCoins((prevIds) => {
+      return [...prevIds, id];
+    });
+    setIsSearchResultFocus(false);
+  };
 
   if (!isSearchResultFocus) return null;
   if (searchInputValue !== "" && filteredCoins.length === 0) {
@@ -34,7 +43,11 @@ const SearchResult = ({
         <ul className="flex flex-col overflow-auto divide-y divide max-h-64">
           {filteredCoins.map((coin) => {
             return (
-              <li key={coin.id} className="flex flex-row">
+              <li
+                onClick={() => coinIdHandler(coin.id)}
+                key={coin.id}
+                className="flex flex-row"
+              >
                 <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
                   <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
                     <a href="/" className="relative block">
@@ -67,7 +80,11 @@ const SearchResult = ({
       <ul className="flex flex-col overflow-auto divide-y divide max-h-64">
         {allCryptoCurrency.map((coin) => {
           return (
-            <li key={coin.id} className="flex flex-row">
+            <li
+              onClick={() => coinIdHandler(coin.id)}
+              key={coin.id}
+              className="flex flex-row"
+            >
               <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
                 <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
                   <a href="/" className="relative block">
@@ -92,7 +109,6 @@ const SearchResult = ({
           );
         })}
       </ul>
-      )
     </div>
   );
 };
