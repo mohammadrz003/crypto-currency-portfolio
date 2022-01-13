@@ -24,8 +24,10 @@ const SearchResult = ({
   }, []);
 
   const coinIdHandler = (id) => {
-    const isIdExist = userCoins.includes(id);
-    if (!isIdExist) {
+    const isIdExist = userCoins.map((obj) => {
+      return obj.id;
+    });
+    if (!isIdExist.includes(id)) {
       setUserCoins((prevIds) => {
         return [...prevIds, { id }];
       });
