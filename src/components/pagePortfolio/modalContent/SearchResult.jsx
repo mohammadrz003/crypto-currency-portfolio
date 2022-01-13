@@ -8,6 +8,7 @@ const SearchResult = ({
   filteredCoins,
   searchInputValue,
   setIsSearchResultFocus,
+  setIsModalOpen,
 }) => {
   const { allCryptoCurrency, setAllCryptoCurrency, userCoins, setUserCoins } =
     useContext(coinsContext);
@@ -23,10 +24,15 @@ const SearchResult = ({
   }, []);
 
   const coinIdHandler = (id) => {
-    setUserCoins((prevIds) => {
-      return [...prevIds, id];
-    });
-    setIsSearchResultFocus(false);
+    const isIdExist = userCoins.includes(id);
+    if (!isIdExist) {
+      setUserCoins((prevIds) => {
+        return [...prevIds, { id }];
+      });
+    }
+    // setIsSearchResultFocus(false);
+
+    setIsModalOpen(false);
   };
 
   if (!isSearchResultFocus) return null;

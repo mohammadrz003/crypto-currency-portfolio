@@ -6,6 +6,7 @@ const CoinsProvider = ({ children }) => {
   const [trendingCoins, setTrendingCoins] = useState(null);
   const [allCryptoCurrency, setAllCryptoCurrency] = useState([]);
   const [userCoins, setUserCoins] = useState([]);
+  const [coinsIdData, setCoinsIdData] = useState([]);
 
   return (
     <coinsContext.Provider
@@ -16,6 +17,8 @@ const CoinsProvider = ({ children }) => {
         setAllCryptoCurrency,
         userCoins,
         setUserCoins,
+        coinsIdData,
+        setCoinsIdData,
       }}
     >
       {children}

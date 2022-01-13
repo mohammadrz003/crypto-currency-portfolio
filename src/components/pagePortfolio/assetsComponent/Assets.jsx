@@ -7,25 +7,23 @@ import http from "../../../adapters/httpService";
 
 const Assets = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { userCoins, setUserCoins } = useContext(coinsContext);
-  const [coinsIdData, setCoinsIdData] = useState([]);
+  const { userCoins, setUserCoins, coinsIdData, setCoinsIdData } =
+    useContext(coinsContext);
 
   useEffect(() => {
-    let coinsDataList = [];
-    for (let i = 0; i < userCoins.length; i++) {
-      const getUserCoinIdData = async () => {
-        try {
-          const { data } = await http.get(`/coins/${userCoins[i]}`);
-          coinsDataList.push(data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      getUserCoinIdData();
+    const array = [...userCoins]; // changed the input array a bit so that the `array[i].id` would actually work - obviously the asker's true array is more than some contrived strings
+    let userCoinData = [];
+    let promises = [];
+    for (let i = 0; i < array.length; i++) {
+      promises.push(
+        http.get(`/coins/${array[i].id}`).then((response) => {
+          // do something with response
+          userCoinData.push(response.data);
+        })
+      );
     }
 
-    console.log(coinsDataList);
-    setCoinsIdData(coinsDataList);
+    Promise.all(promises).then(() => setCoinsIdData(userCoinData));
   }, [userCoins]);
 
   return (
@@ -43,7 +41,7 @@ const Assets = () => {
           isModalOpen={isModalOpen}
           onClose={setIsModalOpen}
         >
-          <ModalContent />
+          <ModalContent setIsModalOpen={setIsModalOpen} />
         </Modal>
       </div>
       <div>

@@ -4,7 +4,7 @@ import axiox from "axios";
 import SearchResult from "./SearchResult";
 import localHttp from "../../../adapters/localHttpService";
 
-const ModalContent = () => {
+const ModalContent = ({ setIsModalOpen }) => {
   const [isSearchResultFocus, setIsSearchResultFocus] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState("");
   const [filteredCoins, setFilteredCoins] = useState([]);
@@ -59,6 +59,7 @@ const ModalContent = () => {
           searchInputValue={searchInputValue}
           isSearchResultFocus={isSearchResultFocus}
           setIsSearchResultFocus={setIsSearchResultFocus}
+          setIsModalOpen={setIsModalOpen}
         />
       </div>
     </div>
