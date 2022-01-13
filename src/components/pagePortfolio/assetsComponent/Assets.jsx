@@ -54,7 +54,7 @@ const Assets = () => {
                     scope="col"
                     className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
                   >
-                    User
+                    name
                   </th>
                   <th
                     scope="col"
@@ -93,7 +93,7 @@ const Assets = () => {
                           </div>
                           <div className="ml-3">
                             <p className="text-gray-900 whitespace-no-wrap">
-                              Julien Huger
+                              {coin.name}
                             </p>
                           </div>
                         </div>
