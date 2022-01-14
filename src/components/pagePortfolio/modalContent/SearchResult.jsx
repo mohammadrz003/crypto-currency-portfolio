@@ -36,8 +36,6 @@ const SearchResult = ({
         return [...prevIds, { id, count: 0 }];
       });
     }
-    console.log(localStorage.getItem("userCoinsId"));
-    // setIsSearchResultFocus(false);
 
     setIsModalOpen(false);
   };
