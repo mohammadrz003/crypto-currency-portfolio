@@ -14,7 +14,7 @@ const Trending = () => {
   return (
     <div className="flex-1">
       <div className="py-1">
-        <h4 className="text-xl font-semibold">Trending currency</h4>
+        <h4 className="text-xl font-semibold text-dark">Trending currency</h4>
       </div>
       <div className="mt-4">
         <ul className="flex flex-col">
@@ -36,7 +36,7 @@ const Trending = () => {
                       </a>
                     </div>
                     <div className="flex-1 pl-1 md:mr-16">
-                      <div className="font-medium dark:text-white">
+                      <div className="font-medium text-gray-800 dark:text-white">
                         {coin.item.symbol}
                       </div>
                       <div className="text-sm text-gray-600 dark:text-gray-200">

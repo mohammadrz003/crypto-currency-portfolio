@@ -12,7 +12,7 @@ const Modal = ({ children, isModalOpen, onClose, className }) => {
         className={`${className} fixed w-full max-w-lg p-5 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md top-1/2 left-1/2`}
       >
         <div className="flex justify-between w-full">
-          <h5 className="font-semibold">Header</h5>
+          <h5 className="font-semibold text-dark">Header</h5>
           <button className="" onClick={() => onClose(false)}>
             <GrClose />
           </button>

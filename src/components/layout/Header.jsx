@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <header className="flex justify-between px-10 py-8">
-      <h2 className="text-2xl font-bold tracking-wide">Balance: $25</h2>
+      <h2 className="text-2xl font-bold tracking-wide text-dark">Balance: $25</h2>
 
       <a href="/" className="flex items-center space-x-3 font-medium text-gray-600">
         <span>rezaiimohammad00@gmail.com</span>
