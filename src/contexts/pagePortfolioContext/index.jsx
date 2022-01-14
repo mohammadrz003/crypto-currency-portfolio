@@ -15,23 +15,24 @@ const CoinsProvider = ({ children }) => {
       localStorage.getItem("userCoinsId") || "[]"
     );
     setUserCoins(localStorageCoinData);
-
-    // if (localStorageCoinData.length > 0) {
-    //   let userCoinData = [...localStorageCoinData];
-    //   let promises = [];
-    //   for (let i = 0; i < userCoinData.length; i++) {
-    //     promises.push(
-    //       http.get(`/coins/${userCoinData[i].id}`).then((response) => {
-    //         userCoinData[i].value = response.data;
-    //       })
-    //     );
-    //   }
-
-    //   Promise.all(promises).then(() => setUserCoins(userCoinData));
-    // } else {
-    //   setUserCoins(localStorageCoinData);
-    // }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("userCoinsId", JSON.stringify(userCoins));
+
+    const array = [...userCoins];
+    let userCoinData = [];
+    let promises = [];
+    for (let i = 0; i < array.length; i++) {
+      promises.push(
+        http.get(`/coins/${array[i].id}`).then((response) => {
+          userCoinData.push(response.data);
+        })
+      );
+    }
+
+    Promise.all(promises).then(() => setCoinsIdData(userCoinData));
+  }, [userCoins]);
 
   return (
     <coinsContext.Provider

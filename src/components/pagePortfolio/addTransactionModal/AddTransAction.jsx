@@ -20,7 +20,6 @@ const AddTransActionModal = ({ addTransactionId, onClose }) => {
       return coinObj.id !== addTransactionId;
     });
     coinFilter.push(cloneObj);
-    localStorage.setItem("userCoinsId", JSON.stringify(coinFilter));
     setUserCoins(coinFilter);
     onClose(false);
   };

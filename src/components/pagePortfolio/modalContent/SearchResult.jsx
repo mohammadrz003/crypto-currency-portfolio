@@ -28,10 +28,6 @@ const SearchResult = ({
       return obj.id;
     });
     if (!isIdExist.includes(id)) {
-      localStorage.setItem(
-        "userCoinsId",
-        JSON.stringify([...userCoins, { id, count: 0 }])
-      );
       setUserCoins((prevIds) => {
         return [...prevIds, { id, count: 0 }];
       });

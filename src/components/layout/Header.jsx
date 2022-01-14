@@ -1,30 +1,21 @@
 import { useContext, useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 import { coinsContext } from "../../contexts/pagePortfolioContext";
-import http from "../../adapters/httpService";
 
 const Header = () => {
-  const { userCoins } = useContext(coinsContext);
+  const { userCoins, coinsIdData } = useContext(coinsContext);
   const [totalBalance, setTotalBalance] = useState(0);
 
   useEffect(() => {
-    const array = [...userCoins];
-    let userCoinData = [];
-    let promises = [];
-    for (let i = 0; i < array.length; i++) {
-      promises.push(
-        http.get(`/coins/${array[i].id}`).then((response) => {
-          userCoinData.push(
-            response.data.market_data.current_price.usd * userCoins[i].count
-          );
-        })
+    const totalBalanceArray = coinsIdData.map((coinData) => {
+      return (
+        coinData.market_data.current_price.usd *
+        userCoins.find((x) => x.id === coinData.id).count
       );
-    }
+    });
 
-    Promise.all(promises).then(() =>
-      setTotalBalance(userCoinData.reduce((a, b) => a + b, 0))
-    );
-  }, [userCoins]);
+    setTotalBalance(totalBalanceArray.reduce((a, b) => a + b, 0));
+  }, [userCoins, coinsIdData]);
   return (
     <header className="flex justify-between px-10 py-8">
       <h2 className="text-2xl font-bold tracking-wide text-dark">

@@ -15,7 +15,6 @@ const ModalContent = ({ setIsModalOpen }) => {
 
   useEffect(() => {
     if (searchInputValue !== "") {
-      console.log("useEffect is runs");
       var timerForSearch = setTimeout(() => {
         searchCoins(searchInputValue)
           .then((response) => {
@@ -25,22 +24,12 @@ const ModalContent = ({ setIsModalOpen }) => {
             console.log(error);
           });
       }, 700);
-      //   localHttp
-      //     .get(`/coins`)
-      //     .then((response) => {
-      //       setFilteredCoins(response.data);
-      //     })
-      //     .catch((error) => {
-      //       console.log(error);
-      //     });
     }
 
     return () => {
       clearTimeout(timerForSearch);
     };
   }, [searchInputValue]);
-
-  console.log(filteredCoins.length);
 
   return (
     <div>
