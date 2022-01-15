@@ -9,11 +9,11 @@ const Assets = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAddTransactionModalOpen, setIsAddTransactionModalOpen] =
     useState(false);
-  const [addTransactionId, setAddTransactionId] = useState(null);
+  const [addTransactionData, setAddTransactionData] = useState(null);
   const { userCoins, coinsIdData } = useContext(coinsContext);
 
-  const addTransactionHandler = (id) => {
-    setAddTransactionId(id);
+  const addTransactionHandler = (coin) => {
+    setAddTransactionData(coin);
     setIsAddTransactionModalOpen(true);
   };
 
@@ -50,6 +50,7 @@ const Assets = () => {
             {coinsIdData.map((coin) => {
               return (
                 <AssetsTableItem
+                  key={coin.id}
                   coin={coin}
                   userCoins={userCoins}
                   addTransactionHandler={addTransactionHandler}
@@ -66,7 +67,7 @@ const Assets = () => {
         onClose={setIsAddTransactionModalOpen}
       >
         <AddTransActionModal
-          addTransactionId={addTransactionId}
+          addTransactionData={addTransactionData}
           onClose={setIsAddTransactionModalOpen}
         />
       </Modal>

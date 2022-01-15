@@ -2,7 +2,7 @@ import { GrTransaction } from "react-icons/gr";
 
 const AssetsTableItem = ({ coin, userCoins, addTransactionHandler }) => {
   return (
-    <tr key={coin.id} className="cursor-pointer">
+    <tr className="cursor-pointer">
       <td>
         <div class="flex items-center space-x-3">
           <div class="avatar">
@@ -25,7 +25,7 @@ const AssetsTableItem = ({ coin, userCoins, addTransactionHandler }) => {
           userCoins.find((x) => x.id === coin.id).count}
       </td>
       <td>
-        <button onClick={() => addTransactionHandler(coin.id)}>
+        <button onClick={() => addTransactionHandler(coin)}>
           <GrTransaction />
         </button>
       </td>
