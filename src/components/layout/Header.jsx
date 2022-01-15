@@ -7,14 +7,16 @@ const Header = () => {
   const [totalBalance, setTotalBalance] = useState(0);
 
   useEffect(() => {
-    const totalBalanceArray = coinsIdData.map((coinData) => {
-      return (
-        coinData.market_data.current_price.usd *
-        userCoins.find((x) => x.id === coinData.id).count
-      );
-    });
+    if (userCoins.length > 0 && coinsIdData.length > 0) {
+      const totalBalanceArray = coinsIdData.map((coinData) => {
+        return (
+          coinData.market_data.current_price.usd *
+          userCoins.find((x) => x.id === coinData.id).count
+        );
+      });
 
-    setTotalBalance(totalBalanceArray.reduce((a, b) => a + b, 0));
+      setTotalBalance(totalBalanceArray.reduce((a, b) => a + b, 0));
+    }
   }, [userCoins, coinsIdData]);
   return (
     <header className="flex justify-between px-10 py-8">
