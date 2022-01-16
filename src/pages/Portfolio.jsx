@@ -1,13 +1,66 @@
+import { useState, useEffect, useContext } from "react/cjs/react.development";
+import { coinsContext } from "../contexts/pagePortfolioContext";
+import AssetsChart from "../components/pagePortfolio/assetsChart/AssetsChart";
 import Assets from "../components/pagePortfolio/assetsComponent/Assets";
+import AssetsDoughnutChart from "../components/pagePortfolio/assetsPieChart/AssetsDoughnutChart";
 import Trending from "../components/pagePortfolio/trendingComponent/Trending";
+import CryptoCard from "../components/pagePortfolio/cryptoCard/CryptoCard";
 
 const Portfolio = () => {
+  const { userCoins, coinsIdData } = useContext(coinsContext);
+  const [chartData, setChartData] = useState({});
+
+  useEffect(() => {
+    if (userCoins.length > 0 && coinsIdData.length > 0) {
+      const totalBalanceArray = coinsIdData.map((coinData) => {
+        return {
+          price:
+            coinData.market_data.current_price.usd *
+            userCoins.find((x) => x.id === coinData.id).count,
+          name: coinData.name,
+        };
+      });
+
+      totalBalanceArray.sort(function (a, b) {
+        return b.price - a.price;
+      });
+
+      setChartData({
+        labels: totalBalanceArray.map((crypto) => crypto.name).slice(0, 4),
+        datasets: [
+          {
+            label: "Price in USD",
+            data: totalBalanceArray.map((crypto) => crypto.price).slice(0, 4),
+            backgroundColor: [
+              "#5A62FD",
+              "#FE895D",
+              "#33DFAC",
+              "#67BFE9",
+              "#A872FE",
+            ],
+          },
+        ],
+      });
+    }
+  }, [userCoins, coinsIdData]);
+
   return (
     <section className="flex flex-wrap w-full">
-      <div className="flex w-full space-x-7">
-        <Assets />
-        <Trending />
+      <div className="flex w-full mb-8 space-x-7">
+        {coinsIdData
+          .map((coin) => {
+            return <CryptoCard coin={coin} />;
+          })
+          .slice(0, 4)}
       </div>
+      <div className="flex w-full mb-4 space-x-7">
+        <Assets />
+        <AssetsDoughnutChart chartData={chartData} />
+      </div>
+      {/* <div className="flex w-full space-x-7">
+        <AssetsChart />
+        <Trending />
+      </div> */}
     </section>
   );
 };
