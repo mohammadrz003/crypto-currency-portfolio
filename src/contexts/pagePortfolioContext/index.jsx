@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
+import { getAllCryptoCurrencyData } from "../../adapters/pagePortfolioAdapter";
 import http from "../../adapters/httpService";
 
 export const coinsContext = React.createContext();
@@ -15,6 +16,30 @@ const CoinsProvider = ({ children }) => {
       localStorage.getItem("userCoinsId") || "[]"
     );
     setUserCoins(localStorageCoinData);
+
+    const myPromise = new Promise((resolve, reject) => {
+      getAllCryptoCurrencyData()
+        .then((response) => {
+          resolve(response);
+          setAllCryptoCurrency(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+          reject(error);
+        });
+    });
+    myPromise.then((res) => {
+      setInterval(() => {
+        console.log("interval executed");
+        getAllCryptoCurrencyData()
+          .then((response) => {
+            setAllCryptoCurrency(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }, 60000);
+    });
   }, []);
 
   useEffect(() => {

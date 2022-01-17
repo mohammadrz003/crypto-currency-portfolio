@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <header className="flex justify-between px-10 py-8">
       <h2 className="text-2xl font-bold tracking-wide text-dark">
-        Balance: ${totalBalance}
+        Balance: ${totalBalance.toFixed(3)}
       </h2>
 
       <a

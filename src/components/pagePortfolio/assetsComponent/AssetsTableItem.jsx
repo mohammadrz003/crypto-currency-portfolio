@@ -26,7 +26,7 @@ const AssetsTableItem = ({ coin, userCoins, addTransactionHandler }) => {
       </td>
       <td>
         <button onClick={() => addTransactionHandler(coin)}>
-          <GrTransaction />
+          <GrTransaction color={"#4CAF50"} />
         </button>
       </td>
     </tr>

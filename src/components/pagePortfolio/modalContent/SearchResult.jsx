@@ -13,16 +13,6 @@ const SearchResult = ({
   const { allCryptoCurrency, setAllCryptoCurrency, userCoins, setUserCoins } =
     useContext(coinsContext);
 
-  useEffect(() => {
-    getAllCryptoCurrencyData()
-      .then((response) => {
-        setAllCryptoCurrency(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   const coinIdHandler = (id) => {
     const isIdExist = userCoins.map((obj) => {
       return obj.id;

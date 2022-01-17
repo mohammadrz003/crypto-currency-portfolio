@@ -7,7 +7,8 @@ import Trending from "../components/pagePortfolio/trendingComponent/Trending";
 import CryptoCard from "../components/pagePortfolio/cryptoCard/CryptoCard";
 
 const Portfolio = () => {
-  const { userCoins, coinsIdData } = useContext(coinsContext);
+  const { userCoins, coinsIdData, allCryptoCurrency } =
+    useContext(coinsContext);
   const [chartData, setChartData] = useState({});
 
   useEffect(() => {
@@ -47,9 +48,9 @@ const Portfolio = () => {
   return (
     <section className="flex flex-wrap w-full">
       <div className="flex w-full mb-8 space-x-7">
-        {coinsIdData
+        {allCryptoCurrency
           .map((coin) => {
-            return <CryptoCard coin={coin} />;
+            return <CryptoCard key={coin.id} coin={coin} />;
           })
           .slice(0, 4)}
       </div>
