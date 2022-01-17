@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
       <Sidebar />
       <section className="flex-1 max-w-screen-xl max-h-screen mx-auto overflow-auto">
         <Header />
-        <main className="px-10">{children}</main>
+        <main className="p-4 md:px-10">{children}</main>
       </section>
     </div>
   );

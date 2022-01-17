@@ -47,14 +47,14 @@ const Portfolio = () => {
 
   return (
     <section className="flex flex-wrap w-full">
-      <div className="flex w-full mb-8 space-x-7">
+      <div className="w-full grid  gap-4 grid-cols-2 md:grid-cols-4 mb-4 md:mb-8">
         {allCryptoCurrency
           .map((coin) => {
             return <CryptoCard key={coin.id} coin={coin} />;
           })
           .slice(0, 4)}
       </div>
-      <div className="flex w-full mb-4 space-x-7">
+      <div className="flex flex-col-reverse space-y-reverse space-y-8 md:space-y-0 md:flex-row w-full mb-4 md:space-x-7">
         <Assets />
         <AssetsDoughnutChart chartData={chartData} />
       </div>

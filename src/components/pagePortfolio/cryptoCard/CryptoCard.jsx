@@ -6,7 +6,7 @@ const CryptoCard = ({ coin }) => {
   }
 
   return (
-    <div class="bg-white overflow-hidden shadow rounded-lg w-1/4 relative">
+    <div class="bg-white overflow-hidden shadow rounded-lg w-full relative">
       <img
         src={coin.image}
         alt="btc logo"

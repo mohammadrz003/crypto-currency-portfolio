@@ -18,7 +18,7 @@ const Assets = () => {
   };
 
   return (
-    <div className="w-4/6">
+    <div className="w-full md:w-4/6">
       <div className="flex items-center justify-between">
         <h4 className="text-xl font-semibold text-dark">Your assets</h4>
         <button

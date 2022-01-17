@@ -19,7 +19,7 @@ const Header = () => {
     }
   }, [userCoins, coinsIdData]);
   return (
-    <header className="flex justify-between px-10 py-8">
+    <header className="hidden md:flex justify-between px-10 py-8">
       <h2 className="text-2xl font-bold tracking-wide text-dark">
         Balance: ${totalBalance.toFixed(3)}
       </h2>
