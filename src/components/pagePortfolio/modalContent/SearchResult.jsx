@@ -1,4 +1,4 @@
-import { useEffect, useContext, useState } from "react/cjs/react.development";
+import { useEffect, useContext, useState } from "react";
 import { coinsContext } from "../../../contexts/pagePortfolioContext";
 import { getAllCryptoCurrencyData } from "../../../adapters/pagePortfolioAdapter";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";

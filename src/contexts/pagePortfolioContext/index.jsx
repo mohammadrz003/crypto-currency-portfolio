@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 import { getAllCryptoCurrencyData } from "../../adapters/pagePortfolioAdapter";
 import http from "../../adapters/httpService";
 

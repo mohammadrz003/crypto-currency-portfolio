@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react/cjs/react.development";
+import { useEffect, useState } from "react";
 import { searchCoins } from "../../../adapters/pagePortfolioAdapter";
 import axiox from "axios";
 import SearchResult from "./SearchResult";

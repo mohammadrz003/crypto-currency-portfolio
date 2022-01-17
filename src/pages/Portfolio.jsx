@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react/cjs/react.development";
+import { useState, useEffect, useContext } from "react";
 import { coinsContext } from "../contexts/pagePortfolioContext";
 import AssetsChart from "../components/pagePortfolio/assetsChart/AssetsChart";
 import Assets from "../components/pagePortfolio/assetsComponent/Assets";

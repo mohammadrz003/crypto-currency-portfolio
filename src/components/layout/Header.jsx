@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 import { coinsContext } from "../../contexts/pagePortfolioContext";
 
 const Header = () => {
