@@ -12,10 +12,22 @@ const CoinsProvider = ({ children }) => {
   const [coinsIdData, setCoinsIdData] = useState([]);
 
   useEffect(() => {
-    const localStorageCoinData = JSON.parse(
-      localStorage.getItem("userCoinsId") || "[]"
-    );
-    setUserCoins(localStorageCoinData);
+    const defaultCurrency = [
+      { id: "bitcoin", count: 0 },
+      { id: "ethereum", count: 0 },
+      { id: "binancecoin", count: 0 },
+      { id: "tether", count: 0 },
+      { id: "cardano", count: 0 },
+    ];
+
+    if (localStorage.getItem("userCoinsId")) {
+      const localStorageCoinData = JSON.parse(
+        localStorage.getItem("userCoinsId")
+      );
+      setUserCoins(localStorageCoinData);
+    } else {
+      setUserCoins(defaultCurrency);
+    }
 
     const myPromise = new Promise((resolve, reject) => {
       getAllCryptoCurrencyData()

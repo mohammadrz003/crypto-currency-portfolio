@@ -36,7 +36,7 @@ const Assets = () => {
         </Modal>
       </div>
 
-      <div className="overflow-x-auto max-h-[23.4rem] overflow-y-auto mt-4">
+      <div className="overflow-x-auto md:max-h-[23.4rem] md:overflow-y-auto mt-4">
         <table className="table w-full relative">
           <thead className="sticky top-0 z-10">
             <tr>

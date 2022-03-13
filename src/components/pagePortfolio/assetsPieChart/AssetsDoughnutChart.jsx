@@ -21,29 +21,38 @@ const AssetsDoughnutChart = ({ chartData }) => {
     },
   };
 
+  console.log(chartData.datasets[0].data);
+
   return (
     <div className="flex-1">
       <h4 className="text-xl font-semibold text-dark py-1">Assets chart</h4>
-      <div className="bg-white p-4 rounded-md mt-4">
-        <Doughnut
-          data={chartData}
-          options={{
-            plugins: {
-              legend: {
-                display: true,
-                position: "bottom",
-                labels: {
-                  usePointStyle: true,
-                  paddingTop: 50,
+      <div className="bg-white p-4 rounded-md mt-4 w-full">
+        {chartData.datasets[0].data.reduce((a, b) => a + b, 0) === 0 ? (
+          <>
+            <img className="w-full" src="/assets/trader-man.svg" alt="" />
+            <p className="text-center mt-5 text-gray-500">add value to watch the chart</p>
+          </>
+        ) : (
+          <Doughnut
+            data={chartData}
+            options={{
+              plugins: {
+                legend: {
+                  display: true,
+                  position: "bottom",
+                  labels: {
+                    usePointStyle: true,
+                    paddingTop: 50,
+                  },
+                },
+                layout: {
+                  padding: 20,
                 },
               },
-              layout: {
-                padding: 20,
-              },
-            },
-          }}
-          // plugins={[legendMargin]}
-        />
+            }}
+            // plugins={[legendMargin]}
+          />
+        )}
       </div>
     </div>
   );

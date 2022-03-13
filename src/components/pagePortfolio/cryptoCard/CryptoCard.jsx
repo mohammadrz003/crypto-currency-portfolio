@@ -27,7 +27,7 @@ const CryptoCard = ({ coin }) => {
               <MdOutlineArrowDropUp color="#4CAF50" fontSize="1.5rem" />
             )}
 
-            <spank
+            <span
               style={{
                 color: `${
                   coin.price_change_percentage_24h < 0 ? "#F44336" : "#4CAF50"
@@ -35,7 +35,7 @@ const CryptoCard = ({ coin }) => {
               }}
             >
               {coin.price_change_percentage_24h.toFixed(2)}
-            </spank>
+            </span>
           </dd>
         </dl>
       </div>

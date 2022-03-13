@@ -1,5 +1,7 @@
 import { useContext, useState } from "react";
 import { useEffect } from "react";
+import { CgSearch } from "react-icons/cg";
+
 import { coinsContext } from "../../contexts/pagePortfolioContext";
 
 const Header = () => {
@@ -24,17 +26,18 @@ const Header = () => {
         Balance: ${totalBalance.toFixed(3)}
       </h2>
 
-      <a
-        href="/"
-        className="flex items-center space-x-3 font-medium text-gray-600"
-      >
-        <span>rezaiimohammad00@gmail.com</span>
-        <img
-          alt="profil"
-          src="/assets/profile-pic-office.png"
-          className="object-cover w-10 h-10 mx-auto rounded-full "
-        />
-      </a>
+      <div className="form-control">
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search here"
+            className="w-full pr-16 input input-bordered"
+          />
+          <button className="absolute top-0 right-0 rounded-l-none btn border-none bg-transparent">
+            <CgSearch color="gray" fontSize="1.3rem" />
+          </button>
+        </div>
+      </div>
     </header>
   );
 };
